@@ -12,6 +12,7 @@ class Category(models.Model):
     def __str__(self):
         return self.name
     
+    
 class Product(models.Model):
     category = models.ForeignKey(Category, related_name='products',
                                  on_delete=models.CASCADE)
@@ -22,7 +23,7 @@ class Product(models.Model):
     price = models.DecimalField(max_digits=10, decimal_places=2)
     available = models.BooleanField(default=True)
     created = models.DateTimeField(auto_now_add=True)
-    updated = models.DateTimeField
+    updated = models.DateTimeField(auto_now=True)
 
     class Meta:
         ordering = ('name', )
